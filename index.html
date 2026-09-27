@@ -1,1157 +1,1437 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Anno Scolastico</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>REMAWED10 WINDOWS DAWNLOADS.</title>
 
 <style>
-:root{
---bg:#080d19;
---card:#131b2e;
---border:#293653;
---text:#f5f7ff;
---muted:#9ba8c2;
---primary:#695cff;
---primary2:#9b6cff;
---green:#22c55e;
---red:#ef4444;
---blue:#38bdf8;
---orange:#f59e0b;
+:root {
+  --bg:#070b14;
+  --card:#101827;
+  --text:#f3f6ff;
+  --muted:#9aa7bd;
+  --primary:#4f8cff;
+  --primary2:#76a7ff;
+  --border:#26344d;
 }
 
-*{box-sizing:border-box}
-
-body{
-margin:0;
-background:
-radial-gradient(circle at top left,#1a1b4a 0,#080d19 38%),
-#080d19;
-color:var(--text);
-font-family:Arial,Helvetica,sans-serif;
-min-height:100vh;
+* {
+  box-sizing:border-box;
 }
 
-button,input,select,textarea{font:inherit}
-button{cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-.hidden{display:none!important}
-
-.app{
-width:min(1200px,100%);
-margin:auto;
-padding:20px;
+body {
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background:
+    radial-gradient(circle at 50% -10%,#17284a 0,#0b1220 32%,var(--bg) 72%);
+  color:var(--text);
 }
 
-.auth{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
+.container {
+  width:min(1100px,92%);
+  margin:auto;
 }
 
-.auth-card{
-width:100%;
-max-width:480px;
-background:rgba(19,27,46,.97);
-border:1px solid var(--border);
-border-radius:28px;
-padding:32px;
-box-shadow:0 30px 100px rgba(0,0,0,.5);
+header {
+  padding:54px 0 30px;
+  text-align:center;
 }
 
-.logo{
-width:68px;
-height:68px;
-border-radius:20px;
-background:linear-gradient(135deg,var(--primary),var(--primary2));
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:32px;
-margin-bottom:20px;
+.badge {
+  display:inline-block;
+  padding:7px 12px;
+  border-radius:999px;
+  background:#172a50;
+  color:#76a7ff;
+  font-weight:700;
+  font-size:13px;
 }
 
-h1,h2,h3,p{margin-top:0}
-.muted{color:var(--muted)}
-
-.field{margin-bottom:16px}
-
-.field label{
-display:block;
-margin-bottom:7px;
-font-size:14px;
+h1 {
+  margin:14px 0 10px;
+  font-size:clamp(32px,5vw,58px);
+  letter-spacing:-1.8px;
 }
 
-input,select,textarea{
-width:100%;
-padding:13px;
-border-radius:12px;
-border:1px solid var(--border);
-background:#0b1222;
-color:white;
-outline:none;
+.subtitle {
+  margin:0 auto;
+  max-width:700px;
+  color:var(--muted);
+  font-size:17px;
 }
 
-input:focus,select:focus,textarea:focus{
-border-color:var(--primary);
-box-shadow:0 0 0 3px rgba(105,92,255,.15);
+.toolbar {
+  display:flex;
+  gap:12px;
+  margin:20px 0 22px;
+  flex-wrap:wrap;
 }
 
-textarea{
-resize:vertical;
-min-height:80px;
+#search {
+  flex:1;
+  min-width:220px;
+  padding:14px 16px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  font-size:15px;
+  outline:none;
+  background:#0d1524;
+  color:var(--text);
 }
 
-.btn{
-border:0;
-border-radius:12px;
-padding:12px 16px;
-color:white;
-background:#26324d;
-transition:.2s;
+#search:focus {
+  border-color:#4f8cff;
+  box-shadow:0 0 0 4px #172a50;
 }
 
-.btn:hover{
-transform:translateY(-1px);
-filter:brightness(1.1);
+.grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  padding-bottom:50px;
 }
 
-.btn-primary{
-background:linear-gradient(135deg,var(--primary),var(--primary2));
+.slot {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:14px;
+  box-shadow:0 6px 20px rgba(31,41,55,.05);
 }
 
-.btn-danger{background:#8c2633}
-.btn-green{background:#16733d}
-.btn-orange{background:#8b5b0b}
-.full{width:100%}
-
-.auth-switch{
-text-align:center;
-margin-top:18px;
+.slot-number {
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:#182946;
+  color:#76a7ff;
+  font-weight:800;
+  flex:none;
 }
 
-.link{
-color:#a59dff;
-cursor:pointer;
-touch-action:manipulation;
--webkit-tap-highlight-color:transparent;
+.slot-content {
+  min-width:0;
+  flex:1;
 }
 
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:15px;
-margin-bottom:18px;
+.slot-title {
+  font-weight:750;
+  font-size:15px;
+  color:var(--text);
+  margin-bottom:5px;
+  word-break:break-word;
 }
 
-.brand{
-display:flex;
-align-items:center;
-gap:12px;
+.slot-file {
+  color:var(--muted);
+  font-size:13px;
+  word-break:break-word;
 }
 
-.brand-icon{
-width:50px;
-height:50px;
-border-radius:15px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(135deg,var(--primary),var(--primary2));
-font-size:23px;
+.download {
+  border:0;
+  background:var(--primary);
+  color:#fff;
+  font-weight:800;
+  padding:11px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  white-space:nowrap;
 }
 
-.user{
-display:flex;
-align-items:center;
-gap:9px;
-background:var(--card);
-border:1px solid var(--border);
-border-radius:14px;
-padding:7px;
+.download:hover {
+  background:var(--primary2);
 }
 
-.avatar{
-width:36px;
-height:36px;
-border-radius:10px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#2a3655;
-font-weight:bold;
+footer {
+  text-align:center;
+  color:var(--muted);
+  padding:0 0 40px;
+  font-size:13px;
 }
 
-nav{
-display:flex;
-gap:8px;
-overflow-x:auto;
-margin-bottom:18px;
-}
+@media (max-width:720px) {
+  .grid {
+    grid-template-columns:1fr;
+  }
 
-.nav-btn{
-white-space:nowrap;
-border:1px solid var(--border);
-background:var(--card);
-color:#ccd5eb;
-padding:11px 16px;
-border-radius:12px;
-}
+  .slot {
+    align-items:flex-start;
+  }
 
-.nav-btn.active{
-background:var(--primary);
-border-color:var(--primary);
-color:white;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:14px;
-}
-
-.card{
-background:rgba(19,27,46,.96);
-border:1px solid var(--border);
-border-radius:18px;
-padding:20px;
-}
-
-.stat-label{
-color:var(--muted);
-font-size:14px;
-}
-
-.stat-number{
-font-size:34px;
-font-weight:800;
-margin:8px 0;
-}
-
-.green{color:var(--green)}
-.red{color:#ff6b6b}
-.blue{color:var(--blue)}
-.orange{color:#fbbf24}
-
-.two{
-display:grid;
-grid-template-columns:1.4fr .8fr;
-gap:15px;
-margin-top:15px;
-}
-
-.progress{
-height:14px;
-background:#090f1e;
-border-radius:20px;
-overflow:hidden;
-margin:15px 0 8px;
-}
-
-.progress-bar{
-height:100%;
-width:0;
-background:linear-gradient(90deg,var(--primary),#b56cff);
-transition:.4s;
-}
-
-.section-title{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-margin-bottom:15px;
-}
-
-.list{
-display:flex;
-flex-direction:column;
-gap:10px;
-}
-
-.list-item{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:10px;
-padding:12px;
-border-radius:12px;
-background:#0d1628;
-border:1px solid var(--border);
-}
-
-.list-main{min-width:0}
-
-.list-title{font-weight:bold}
-
-.list-sub{
-color:var(--muted);
-font-size:13px;
-margin-top:3px;
-}
-
-.actions{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
-}
-
-.notice{
-background:rgba(34,197,94,.1);
-border:1px solid rgba(34,197,94,.3);
-color:#a7f3c0;
-padding:13px;
-border-radius:12px;
-margin-bottom:15px;
-}
-
-.empty{
-text-align:center;
-padding:30px;
-color:var(--muted);
-}
-
-.calendar-controls{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:15px;
-}
-
-.weekdays,
-.calendar-grid{
-display:grid;
-grid-template-columns:repeat(7,1fr);
-gap:6px;
-}
-
-.weekday{
-text-align:center;
-color:var(--muted);
-font-size:12px;
-padding:7px;
-}
-
-.day{
-min-height:78px;
-padding:8px;
-border-radius:10px;
-background:#0e1729;
-border:1px solid #202d48;
-}
-
-.day.empty{opacity:.2}
-
-.day.weekend{
-color:#737f9b;
-background:#111622;
-}
-
-.day.today{
-box-shadow:inset 0 0 0 2px var(--primary);
-}
-
-.day.holiday{
-background:rgba(239,68,68,.12);
-border-color:#752b35;
-}
-
-.day.bridge{
-background:rgba(245,158,11,.12);
-border-color:#72531c;
-}
-
-.day.absence{
-background:rgba(56,189,248,.12);
-border-color:#155875;
-}
-
-.day-number{
-font-weight:bold;
-font-size:13px;
-}
-
-.day-tags{
-margin-top:6px;
-display:flex;
-flex-direction:column;
-gap:3px;
-}
-
-.tag{
-font-size:9px;
-padding:3px 4px;
-border-radius:5px;
-background:#26324b;
-}
-
-.tag.red{background:#54232b}
-.tag.orange{background:#4f3a16}
-.tag.blue{background:#123e51}
-.tag.gray{background:#252b3a}
-
-.setting{
-padding:16px 0;
-border-bottom:1px solid var(--border);
-}
-
-.setting:last-child{border-bottom:0}
-
-.checkbox-row{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-margin-top:12px;
-}
-
-.check{
-display:flex;
-align-items:center;
-gap:7px;
-padding:9px 12px;
-border-radius:10px;
-background:#0e1729;
-border:1px solid var(--border);
-}
-
-.check input{width:auto}
-
-.modal-bg{
-position:fixed;
-inset:0;
-z-index:1000;
-background:rgba(0,0,0,.72);
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-}
-
-.modal{
-width:100%;
-max-width:520px;
-max-height:90vh;
-overflow:auto;
-background:var(--card);
-border:1px solid var(--border);
-border-radius:20px;
-padding:24px;
-}
-
-.modal-actions{
-display:flex;
-justify-content:flex-end;
-gap:8px;
-margin-top:20px;
-}
-
-footer{
-text-align:center;
-color:#65718c;
-padding:30px 0 10px;
-font-size:12px;
-}
-
-@media(max-width:850px){
-.grid{grid-template-columns:repeat(2,1fr)}
-.two{grid-template-columns:1fr}
-}
-
-@media(max-width:550px){
-.app{padding:12px}
-.auth-card{padding:23px}
-.grid{grid-template-columns:1fr 1fr}
-.stat-number{font-size:27px}
-.day{min-height:62px;padding:6px}
-.day-tags{font-size:8px}
-header{align-items:flex-start}
-.user span{display:none}
+  .download {
+    align-self:center;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div id="authScreen" class="auth">
+<header class="container">
 
-<div class="auth-card">
+  <span class="badge">100 DOWNLOAD</span>
 
-<div id="registerBox">
+  <h1>REMAWED10 DOWNLOAD HUB</h1>
 
-<div class="logo">📚</div>
-
-<h1>Crea il tuo account</h1>
-
-<p class="muted">
-Configura il periodo scolastico e crea il tuo account.
-</p>
-
-<div class="field">
-<label>Nickname</label>
-<input id="regNick" maxlength="30" placeholder="Es. Marco123">
-</div>
-
-<div class="field">
-<label>Password</label>
-<input id="regPass" type="password" placeholder="Password">
-</div>
-
-<div class="field">
-<label>Inizio anno / progetto</label>
-<input id="regStart" type="date">
-</div>
-
-<div class="field">
-<label>Fine anno / progetto</label>
-<input id="regEnd" type="date">
-</div>
-
-<button class="btn btn-primary full" onclick="createAccount()">
-Crea account ufficialmente
-</button>
-
-<div class="auth-switch">
-Hai già un account?
-<span class="link" onclick="showLogin()">Accedi</span>
-</div>
-
-</div>
-
-<div id="loginBox" class="hidden">
-
-<div class="logo">📚</div>
-
-<h1>Bentornato 👋</h1>
-
-<p class="muted">Accedi al tuo account.</p>
-
-<div class="field">
-<label>Nickname</label>
-<input id="loginNick">
-</div>
-
-<div class="field">
-<label>Password</label>
-<input id="loginPass" type="password">
-</div>
-
-<button class="btn btn-primary full" onclick="login()">
-Accedi
-</button>
-
-<div class="auth-switch">
-Non hai un account?
-<span class="link" onclick="showRegister()">Crealo</span>
-</div>
-
-</div>
-
-</div>
-</div>
-
-
-<div id="appScreen" class="hidden">
-
-<div class="app">
-
-<header>
-
-<div class="brand">
-
-<div class="brand-icon">📚</div>
-
-<div>
-<h2 style="margin:0">Anno Scolastico</h2>
-<div class="muted" id="periodText"></div>
-</div>
-
-</div>
-
-<div class="user">
-
-<div class="avatar" id="avatar">?</div>
-
-<span id="username"></span>
-
-<button class="btn" onclick="logout()">Esci</button>
-
-</div>
+  <p class="subtitle">
+    Scarica i file disponibili.
+    <b>Premi SCARICA per iniziare il download.</b>
+  </p>
 
 </header>
 
-
-<nav>
-
-<button class="nav-btn active"
-onclick="openPage('dashboard',this)">
-🏠 Dashboard
-</button>
-
-<button class="nav-btn"
-onclick="openPage('calendar',this)">
-📅 Calendario
-</button>
-
-<button class="nav-btn"
-onclick="openPage('absence',this)">
-❌ Assenze
-</button>
-
-<button class="nav-btn"
-onclick="openPage('settings',this)">
-⚙️ Impostazioni
-</button>
-
-</nav>
-
-
-<section id="dashboard" class="page">
-
-<div class="notice">
-✅ Puoi sempre modificare weekend, festività, ponti e assenze dalle Impostazioni.
-</div>
-
-<div class="grid">
-
-<div class="card">
-<div class="stat-label">Giorni trascorsi</div>
-<div class="stat-number green" id="passed">0</div>
-<div class="stat-label">giorni effettivamente trascorsi</div>
-</div>
-
-<div class="card">
-<div class="stat-label">Giorni rimanenti</div>
-<div class="stat-number blue" id="remaining">0</div>
-<div class="stat-label">giorni contabili futuri</div>
-</div>
-
-<div class="card">
-<div class="stat-label">Assenze</div>
-<div class="stat-number red" id="absenceCount">0</div>
-<div class="stat-label">assenze contabili</div>
-</div>
-
-<div class="card">
-<div class="stat-label">Totale senza assenze</div>
-<div class="stat-number" id="total">0</div>
-<div class="stat-label">giorni contabili completi</div>
-</div>
-
-</div>
-
-<div class="two">
-
-<div class="card">
-
-<div class="section-title">
-<h3>📈 Progresso</h3>
-<b id="percent">0%</b>
-</div>
-
-<div class="progress">
-<div id="progressBar" class="progress-bar"></div>
-</div>
-
-<p class="muted" id="progressText"></p>
-
-</div>
-
-<div class="card">
-
-<h3>📌 Riepilogo</h3>
-
-<div class="list">
-
-<div class="list-item">
-<div class="list-main">
-<div class="list-title">🚫 Giorni esclusi</div>
-<div class="list-sub" id="excludedSummary">-</div>
-</div>
-</div>
-
-<div class="list-item">
-<div class="list-main">
-<div class="list-title">🎉 Festività</div>
-<div class="list-sub" id="holidaySummary">0</div>
-</div>
-</div>
-
-<div class="list-item">
-<div class="list-main">
-<div class="list-title">🌉 Ponti</div>
-<div class="list-sub" id="bridgeSummary">0</div>
-</div>
-</div>
-
-<div class="list-item">
-<div class="list-main">
-<div class="list-title">❌ Assenze passate</div>
-<div class="list-sub" id="pastAbsenceSummary">0</div>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section id="calendar" class="page hidden">
-
-<div class="card">
-
-<div class="calendar-controls">
-
-<button class="btn" onclick="changeMonth(-1)">←</button>
-
-<h3 id="calendarTitle"></h3>
-
-<button class="btn" onclick="changeMonth(1)">→</button>
-
-</div>
-
-<div class="weekdays">
-
-<div class="weekday">Lun</div>
-<div class="weekday">Mar</div>
-<div class="weekday">Mer</div>
-<div class="weekday">Gio</div>
-<div class="weekday">Ven</div>
-<div class="weekday">Sab</div>
-<div class="weekday">Dom</div>
-
-</div>
-
-<div id="calendarGrid" class="calendar-grid"></div>
-
-</div>
-
-</section>
-
-
-<section id="absence" class="page hidden">
-
-<div class="card">
-
-<div class="section-title">
-
-<div>
-<h3>❌ Assenze</h3>
-<p class="muted">Gestisci tutte le tue assenze.</p>
-</div>
-
-<button class="btn btn-primary"
-onclick="openAbsenceModal()">
-+ Aggiungi assenza
-</button>
-
-</div>
-
-<div id="absenceList" class="list"></div>
-
-</div>
-
-</section>
-
-
-<section id="settings" class="page hidden">
-
-<div class="card">
-
-<h3>⚙️ Impostazioni</h3>
-
-<p class="muted">
-Puoi modificare tutto quando vuoi.
-</p>
-
-<div class="setting">
-
-<div class="field">
-<label>Inizio anno / progetto</label>
-<input id="setStart" type="date">
-</div>
-
-<div class="field">
-<label>Fine anno / progetto</label>
-<input id="setEnd" type="date">
-</div>
-
-</div>
-
-
-<div class="setting">
-
-<b>🚫 Giorni della settimana non contabili</b>
-
-<p class="list-sub">
-Questi giorni non verranno mai conteggiati.
-</p>
-
-<div class="checkbox-row">
-
-<label class="check">
-<input type="checkbox" value="1"> Lunedì
-</label>
-
-<label class="check">
-<input type="checkbox" value="2"> Martedì
-</label>
-
-<label class="check">
-<input type="checkbox" value="3"> Mercoledì
-</label>
-
-<label class="check">
-<input type="checkbox" value="4"> Giovedì
-</label>
-
-<label class="check">
-<input type="checkbox" value="5"> Venerdì
-</label>
-
-<label class="check">
-<input type="checkbox" value="6"> Sabato
-</label>
-
-<label class="check">
-<input type="checkbox" value="0"> Domenica
-</label>
-
-</div>
-
-</div>
-
-
-<div class="setting">
-
-<label style="display:flex;align-items:center;gap:10px">
-
-<input id="excludeAbsences"
-type="checkbox"
-style="width:20px;height:20px">
-
-<div>
-<b>Le assenze non contano come giorno trascorso</b>
-<div class="list-sub">
-Le assenze vengono escluse dal conteggio.
-</div>
-</div>
-
-</label>
-
-</div>
-
-
-<div class="setting">
-
-<div class="section-title">
-
-<div>
-<b>🎉 Festività</b>
-
-<div class="list-sub">
-Puoi inserire una festività singola o un intervallo.
-</div>
-
-</div>
-
-<button class="btn btn-primary"
-onclick="openSpecialModal('holiday')">
-+ Aggiungi
-</button>
-
-</div>
-
-<div id="holidayList" class="list"></div>
-
-</div>
-
-
-<div class="setting">
-
-<div class="section-title">
-
-<div>
-<b>🌉 Ponti</b>
-
-<div class="list-sub">
-Inserisci inizio e fine del ponte.
-</div>
-
-</div>
-
-<button class="btn btn-primary"
-onclick="openSpecialModal('bridge')">
-+ Aggiungi ponte
-</button>
-
-</div>
-
-<div id="bridgeList" class="list"></div>
-
-</div>
-
-
-<div class="actions" style="margin-top:20px">
-
-<button class="btn btn-primary"
-onclick="saveSettings()">
-💾 Salva impostazioni
-</button>
-
-<button class="btn btn-danger"
-onclick="resetAccount()">
-🗑️ Elimina account
-</button>
-
-</div>
-
-</div>
-
-</section>
-
+<main class="container">
+
+  <div class="toolbar">
+    <input
+      id="search"
+      type="search"
+      placeholder="Cerca tra i 100 file..."
+      autocomplete="off"
+    >
+  </div>
+
+  <section class="grid" id="grid">
+
+    <!-- SLOT 1 -->
+    <article class="slot">
+      <div class="slot-number">1</div>
+      <div class="slot-content">
+        <div class="slot-title">autoclick per windows</div>
+        <div class="slot-file">downloads/slot01/autoclick.exe</div>
+      </div>
+      <a class="download" href="./downloads/slot01/autoclick.exe" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 2 -->
+    <article class="slot">
+      <div class="slot-number">2</div>
+      <div class="slot-content">
+        <div class="slot-title">contdown personalizzato da programmare.(consigliato per studenti)</div>
+        <div class="slot-file">downloads/slot02/contatoreperstudenti.exe</div>
+      </div>
+      <a class="download" href="./downloads/slot02/contatoreperstudenti.exe" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 3 -->
+    <article class="slot">
+      <div class="slot-number">3</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 3</div>
+        <div class="slot-file">downloads/slot03/file3.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot03/file3.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 4 -->
+    <article class="slot">
+      <div class="slot-number">4</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 4</div>
+        <div class="slot-file">downloads/slot04/file4.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot04/file4.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 5 -->
+    <article class="slot">
+      <div class="slot-number">5</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 5</div>
+        <div class="slot-file">downloads/slot05/file5.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot05/file5.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 6 -->
+    <article class="slot">
+      <div class="slot-number">6</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 6</div>
+        <div class="slot-file">downloads/slot06/file6.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot06/file6.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 7 -->
+    <article class="slot">
+      <div class="slot-number">7</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 7</div>
+        <div class="slot-file">downloads/slot07/file7.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot07/file7.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 8 -->
+    <article class="slot">
+      <div class="slot-number">8</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 8</div>
+        <div class="slot-file">downloads/slot08/file8.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot08/file8.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 9 -->
+    <article class="slot">
+      <div class="slot-number">9</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 9</div>
+        <div class="slot-file">downloads/slot09/file9.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot09/file9.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 10 -->
+    <article class="slot">
+      <div class="slot-number">10</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 10</div>
+        <div class="slot-file">downloads/slot10/file10.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot10/file10.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 11 -->
+    <article class="slot">
+      <div class="slot-number">11</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 11</div>
+        <div class="slot-file">downloads/slot11/file11.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot11/file11.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 12 -->
+    <article class="slot">
+      <div class="slot-number">12</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 12</div>
+        <div class="slot-file">downloads/slot12/file12.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot12/file12.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 13 -->
+    <article class="slot">
+      <div class="slot-number">13</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 13</div>
+        <div class="slot-file">downloads/slot13/file13.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot13/file13.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 14 -->
+    <article class="slot">
+      <div class="slot-number">14</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 14</div>
+        <div class="slot-file">downloads/slot14/file14.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot14/file14.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 15 -->
+    <article class="slot">
+      <div class="slot-number">15</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 15</div>
+        <div class="slot-file">downloads/slot15/file15.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot15/file15.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 16 -->
+    <article class="slot">
+      <div class="slot-number">16</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 16</div>
+        <div class="slot-file">downloads/slot16/file16.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot16/file16.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 17 -->
+    <article class="slot">
+      <div class="slot-number">17</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 17</div>
+        <div class="slot-file">downloads/slot17/file17.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot17/file17.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 18 -->
+    <article class="slot">
+      <div class="slot-number">18</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 18</div>
+        <div class="slot-file">downloads/slot18/file18.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot18/file18.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 19 -->
+    <article class="slot">
+      <div class="slot-number">19</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 19</div>
+        <div class="slot-file">downloads/slot19/file19.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot19/file19.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 20 -->
+    <article class="slot">
+      <div class="slot-number">20</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 20</div>
+        <div class="slot-file">downloads/slot20/file20.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot20/file20.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 21 -->
+    <article class="slot">
+      <div class="slot-number">21</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 21</div>
+        <div class="slot-file">downloads/slot21/file21.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot21/file21.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 22 -->
+    <article class="slot">
+      <div class="slot-number">22</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 22</div>
+        <div class="slot-file">downloads/slot22/file22.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot22/file22.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 23 -->
+    <article class="slot">
+      <div class="slot-number">23</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 23</div>
+        <div class="slot-file">downloads/slot23/file23.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot23/file23.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 24 -->
+    <article class="slot">
+      <div class="slot-number">24</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 24</div>
+        <div class="slot-file">downloads/slot24/file24.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot24/file24.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 25 -->
+    <article class="slot">
+      <div class="slot-number">25</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 25</div>
+        <div class="slot-file">downloads/slot25/file25.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot25/file25.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 26 -->
+    <article class="slot">
+      <div class="slot-number">26</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 26</div>
+        <div class="slot-file">downloads/slot26/file26.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot26/file26.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 27 -->
+    <article class="slot">
+      <div class="slot-number">27</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 27</div>
+        <div class="slot-file">downloads/slot27/file27.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot27/file27.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 28 -->
+    <article class="slot">
+      <div class="slot-number">28</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 28</div>
+        <div class="slot-file">downloads/slot28/file28.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot28/file28.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 29 -->
+    <article class="slot">
+      <div class="slot-number">29</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 29</div>
+        <div class="slot-file">downloads/slot29/file29.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot29/file29.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 30 -->
+    <article class="slot">
+      <div class="slot-number">30</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 30</div>
+        <div class="slot-file">downloads/slot30/file30.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot30/file30.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 31 -->
+    <article class="slot">
+      <div class="slot-number">31</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 31</div>
+        <div class="slot-file">downloads/slot31/file31.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot31/file31.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 32 -->
+    <article class="slot">
+      <div class="slot-number">32</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 32</div>
+        <div class="slot-file">downloads/slot32/file32.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot32/file32.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 33 -->
+    <article class="slot">
+      <div class="slot-number">33</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 33</div>
+        <div class="slot-file">downloads/slot33/file33.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot33/file33.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 34 -->
+    <article class="slot">
+      <div class="slot-number">34</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 34</div>
+        <div class="slot-file">downloads/slot34/file34.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot34/file34.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 35 -->
+    <article class="slot">
+      <div class="slot-number">35</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 35</div>
+        <div class="slot-file">downloads/slot35/file35.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot35/file35.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 36 -->
+    <article class="slot">
+      <div class="slot-number">36</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 36</div>
+        <div class="slot-file">downloads/slot36/file36.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot36/file36.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 37 -->
+    <article class="slot">
+      <div class="slot-number">37</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 37</div>
+        <div class="slot-file">downloads/slot37/file37.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot37/file37.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 38 -->
+    <article class="slot">
+      <div class="slot-number">38</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 38</div>
+        <div class="slot-file">downloads/slot38/file38.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot38/file38.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 39 -->
+    <article class="slot">
+      <div class="slot-number">39</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 39</div>
+        <div class="slot-file">downloads/slot39/file39.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot39/file39.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 40 -->
+    <article class="slot">
+      <div class="slot-number">40</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 40</div>
+        <div class="slot-file">downloads/slot40/file40.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot40/file40.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 41 -->
+    <article class="slot">
+      <div class="slot-number">41</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 41</div>
+        <div class="slot-file">downloads/slot41/file41.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot41/file41.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 42 -->
+    <article class="slot">
+      <div class="slot-number">42</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 42</div>
+        <div class="slot-file">downloads/slot42/file42.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot42/file42.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 43 -->
+    <article class="slot">
+      <div class="slot-number">43</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 43</div>
+        <div class="slot-file">downloads/slot43/file43.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot43/file43.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 44 -->
+    <article class="slot">
+      <div class="slot-number">44</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 44</div>
+        <div class="slot-file">downloads/slot44/file44.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot44/file44.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 45 -->
+    <article class="slot">
+      <div class="slot-number">45</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 45</div>
+        <div class="slot-file">downloads/slot45/file45.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot45/file45.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 46 -->
+    <article class="slot">
+      <div class="slot-number">46</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 46</div>
+        <div class="slot-file">downloads/slot46/file46.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot46/file46.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 47 -->
+    <article class="slot">
+      <div class="slot-number">47</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 47</div>
+        <div class="slot-file">downloads/slot47/file47.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot47/file47.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 48 -->
+    <article class="slot">
+      <div class="slot-number">48</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 48</div>
+        <div class="slot-file">downloads/slot48/file48.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot48/file48.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 49 -->
+    <article class="slot">
+      <div class="slot-number">49</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 49</div>
+        <div class="slot-file">downloads/slot49/file49.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot49/file49.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 50 -->
+    <article class="slot">
+      <div class="slot-number">50</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 50</div>
+        <div class="slot-file">downloads/slot50/file50.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot50/file50.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 51 -->
+    <article class="slot">
+      <div class="slot-number">51</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 51</div>
+        <div class="slot-file">downloads/slot51/file51.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot51/file51.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 52 -->
+    <article class="slot">
+      <div class="slot-number">52</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 52</div>
+        <div class="slot-file">downloads/slot52/file52.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot52/file52.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 53 -->
+    <article class="slot">
+      <div class="slot-number">53</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 53</div>
+        <div class="slot-file">downloads/slot53/file53.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot53/file53.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 54 -->
+    <article class="slot">
+      <div class="slot-number">54</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 54</div>
+        <div class="slot-file">downloads/slot54/file54.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot54/file54.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 55 -->
+    <article class="slot">
+      <div class="slot-number">55</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 55</div>
+        <div class="slot-file">downloads/slot55/file55.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot55/file55.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 56 -->
+    <article class="slot">
+      <div class="slot-number">56</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 56</div>
+        <div class="slot-file">downloads/slot56/file56.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot56/file56.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 57 -->
+    <article class="slot">
+      <div class="slot-number">57</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 57</div>
+        <div class="slot-file">downloads/slot57/file57.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot57/file57.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 58 -->
+    <article class="slot">
+      <div class="slot-number">58</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 58</div>
+        <div class="slot-file">downloads/slot58/file58.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot58/file58.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 59 -->
+    <article class="slot">
+      <div class="slot-number">59</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 59</div>
+        <div class="slot-file">downloads/slot59/file59.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot59/file59.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 60 -->
+    <article class="slot">
+      <div class="slot-number">60</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 60</div>
+        <div class="slot-file">downloads/slot60/file60.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot60/file60.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 61 -->
+    <article class="slot">
+      <div class="slot-number">61</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 61</div>
+        <div class="slot-file">downloads/slot61/file61.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot61/file61.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 62 -->
+    <article class="slot">
+      <div class="slot-number">62</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 62</div>
+        <div class="slot-file">downloads/slot62/file62.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot62/file62.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 63 -->
+    <article class="slot">
+      <div class="slot-number">63</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 63</div>
+        <div class="slot-file">downloads/slot63/file63.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot63/file63.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 64 -->
+    <article class="slot">
+      <div class="slot-number">64</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 64</div>
+        <div class="slot-file">downloads/slot64/file64.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot64/file64.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 65 -->
+    <article class="slot">
+      <div class="slot-number">65</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 65</div>
+        <div class="slot-file">downloads/slot65/file65.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot65/file65.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 66 -->
+    <article class="slot">
+      <div class="slot-number">66</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 66</div>
+        <div class="slot-file">downloads/slot66/file66.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot66/file66.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 67 -->
+    <article class="slot">
+      <div class="slot-number">67</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 67</div>
+        <div class="slot-file">downloads/slot67/file67.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot67/file67.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 68 -->
+    <article class="slot">
+      <div class="slot-number">68</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 68</div>
+        <div class="slot-file">downloads/slot68/file68.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot68/file68.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 69 -->
+    <article class="slot">
+      <div class="slot-number">69</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 69</div>
+        <div class="slot-file">downloads/slot69/file69.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot69/file69.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 70 -->
+    <article class="slot">
+      <div class="slot-number">70</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 70</div>
+        <div class="slot-file">downloads/slot70/file70.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot70/file70.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 71 -->
+    <article class="slot">
+      <div class="slot-number">71</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 71</div>
+        <div class="slot-file">downloads/slot71/file71.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot71/file71.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 72 -->
+    <article class="slot">
+      <div class="slot-number">72</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 72</div>
+        <div class="slot-file">downloads/slot72/file72.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot72/file72.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 73 -->
+    <article class="slot">
+      <div class="slot-number">73</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 73</div>
+        <div class="slot-file">downloads/slot73/file73.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot73/file73.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 74 -->
+    <article class="slot">
+      <div class="slot-number">74</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 74</div>
+        <div class="slot-file">downloads/slot74/file74.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot74/file74.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 75 -->
+    <article class="slot">
+      <div class="slot-number">75</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 75</div>
+        <div class="slot-file">downloads/slot75/file75.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot75/file75.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 76 -->
+    <article class="slot">
+      <div class="slot-number">76</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 76</div>
+        <div class="slot-file">downloads/slot76/file76.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot76/file76.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 77 -->
+    <article class="slot">
+      <div class="slot-number">77</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 77</div>
+        <div class="slot-file">downloads/slot77/file77.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot77/file77.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 78 -->
+    <article class="slot">
+      <div class="slot-number">78</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 78</div>
+        <div class="slot-file">downloads/slot78/file78.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot78/file78.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 79 -->
+    <article class="slot">
+      <div class="slot-number">79</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 79</div>
+        <div class="slot-file">downloads/slot79/file79.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot79/file79.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 80 -->
+    <article class="slot">
+      <div class="slot-number">80</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 80</div>
+        <div class="slot-file">downloads/slot80/file80.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot80/file80.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 81 -->
+    <article class="slot">
+      <div class="slot-number">81</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 81</div>
+        <div class="slot-file">downloads/slot81/file81.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot81/file81.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 82 -->
+    <article class="slot">
+      <div class="slot-number">82</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 82</div>
+        <div class="slot-file">downloads/slot82/file82.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot82/file82.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 83 -->
+    <article class="slot">
+      <div class="slot-number">83</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 83</div>
+        <div class="slot-file">downloads/slot83/file83.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot83/file83.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 84 -->
+    <article class="slot">
+      <div class="slot-number">84</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 84</div>
+        <div class="slot-file">downloads/slot84/file84.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot84/file84.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 85 -->
+    <article class="slot">
+      <div class="slot-number">85</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 85</div>
+        <div class="slot-file">downloads/slot85/file85.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot85/file85.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 86 -->
+    <article class="slot">
+      <div class="slot-number">86</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 86</div>
+        <div class="slot-file">downloads/slot86/file86.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot86/file86.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 87 -->
+    <article class="slot">
+      <div class="slot-number">87</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 87</div>
+        <div class="slot-file">downloads/slot87/file87.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot87/file87.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 88 -->
+    <article class="slot">
+      <div class="slot-number">88</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 88</div>
+        <div class="slot-file">downloads/slot88/file88.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot88/file88.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 89 -->
+    <article class="slot">
+      <div class="slot-number">89</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 89</div>
+        <div class="slot-file">downloads/slot89/file89.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot89/file89.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 90 -->
+    <article class="slot">
+      <div class="slot-number">90</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 90</div>
+        <div class="slot-file">downloads/slot90/file90.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot90/file90.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 91 -->
+    <article class="slot">
+      <div class="slot-number">91</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 91</div>
+        <div class="slot-file">downloads/slot91/file91.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot91/file91.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 92 -->
+    <article class="slot">
+      <div class="slot-number">92</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 92</div>
+        <div class="slot-file">downloads/slot92/file92.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot92/file92.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 93 -->
+    <article class="slot">
+      <div class="slot-number">93</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 93</div>
+        <div class="slot-file">downloads/slot93/file93.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot93/file93.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 94 -->
+    <article class="slot">
+      <div class="slot-number">94</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 94</div>
+        <div class="slot-file">downloads/slot94/file94.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot94/file94.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 95 -->
+    <article class="slot">
+      <div class="slot-number">95</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 95</div>
+        <div class="slot-file">downloads/slot95/file95.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot95/file95.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 96 -->
+    <article class="slot">
+      <div class="slot-number">96</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 96</div>
+        <div class="slot-file">downloads/slot96/file96.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot96/file96.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 97 -->
+    <article class="slot">
+      <div class="slot-number">97</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 97</div>
+        <div class="slot-file">downloads/slot97/file97.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot97/file97.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 98 -->
+    <article class="slot">
+      <div class="slot-number">98</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 98</div>
+        <div class="slot-file">downloads/slot98/file98.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot98/file98.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 99 -->
+    <article class="slot">
+      <div class="slot-number">99</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 99</div>
+        <div class="slot-file">downloads/slot99/file99.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot99/file99.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+    <!-- SLOT 100 -->
+    <article class="slot">
+      <div class="slot-number">100</div>
+      <div class="slot-content">
+        <div class="slot-title">Titolo da sostituire 100</div>
+        <div class="slot-file">downloads/slot100/file100.zip</div>
+      </div>
+      <a class="download" href="./downloads/slot100/file100.zip" download>
+        SCARICA
+      </a>
+    </article>
+
+  </section>
+
+</main>
 
 <footer>
-Anno Scolastico • Dati salvati localmente nel browser
+  Download Hub • 100 slot
 </footer>
 
-</div>
-</div>
-
-
-<div id="absenceModal" class="modal-bg hidden">
-
-<div class="modal">
-
-<h2>❌ Aggiungi assenza</h2>
-
-<div class="field">
-<label>Data</label>
-<input id="absenceDate" type="date">
-</div>
-
-<div class="field">
-<label>Motivo / nota</label>
-<textarea id="absenceNote"
-placeholder="Facoltativo"></textarea>
-</div>
-
-<div class="modal-actions">
-
-<button class="btn"
-onclick="closeModal('absenceModal')">
-Annulla
-</button>
-
-<button class="btn btn-primary"
-onclick="addAbsence()">
-Aggiungi
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div id="specialModal" class="modal-bg hidden">
-
-<div class="modal">
-
-<h2 id="specialTitle">Aggiungi evento</h2>
-
-<div class="field">
-
-<label>Nome</label>
-
-<input id="specialName"
-placeholder="Es. Vacanze di Natale">
-
-</div>
-
-<div class="field">
-
-<label>Data di inizio</label>
-
-<input id="specialStart" type="date">
-
-</div>
-
-<div class="field">
-
-<label>Data di fine</label>
-
-<input id="specialEnd" type="date">
-
-</div>
-
-<div class="muted" style="font-size:13px">
-Per una festività singola inserisci la stessa data come inizio e fine.
-</div>
-
-<div class="modal-actions">
-
-<button class="btn"
-onclick="closeModal('specialModal')">
-Annulla
-</button>
-
-<button class="btn btn-primary"
-onclick="addSpecial()">
-Salva evento
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
 <script>
+const search = document.getElementById("search");
 
-/* Fallback per i tap su mobile: usa gli stessi handler onclick già presenti. */
-document.addEventListener("touchend",function(e){
-  const el=e.target.closest("button,.link");
-  if(!el || el.disabled || e.defaultPrevented) return;
-  if(el.dataset.touchFallback==="1") return;
-  el.dataset.touchFallback="1";
-  setTimeout(()=>delete el.dataset.touchFallback,450);
-  if(typeof el.onclick==="function") el.onclick.call(el,e);
-},{passive:true});
+search.addEventListener("input", () => {
 
-const STORAGE_KEY="anno_scolastico_range_v4";
+  const query = search.value.toLowerCase().trim();
 
-let account=null;
-let calendarDate=new Date();
-let specialType="holiday";
+  document.querySelectorAll(".slot").forEach(slot => {
 
-const monthNames=[
-"Gennaio","Febbraio","Marzo","Aprile",
-"Maggio","Giugno","Luglio","Agosto",
-"Settembre","Ottobre","Novembre","Dicembre"
-];
+    const text = slot.textContent.toLowerCase();
 
-const weekdayNames=[
-"Domenica","Lunedì","Martedì",
-"Mercoledì","Giovedì","Venerdì","Sabato"
-];
+    slot.style.display =
+      text.includes(query) ? "" : "none";
 
-
-function toISO(date){
-
-const d=new Date(date);
-
-return d.getFullYear()+"-"+
-String(d.getMonth()+1).padStart(2,"0")+"-"+
-String(d.getDate()).padStart(2,"0");
-
-}
-
-
-function parseDate(str){
-
-const [y,m,d]=str.split("-").map(Number);
-
-return new Date(y,m-1,d);
-
-}
-
-
-function formatDate(str){
-
-return parseDate(str).toLocaleDateString(
-"it-IT",
-{
-day:"2-digit",
-month:"2-digit",
-year:"numeric"
-});
-
-}
-
-
-function todayDate(){
-
-return parseDate(toISO(new Date()));
-
-}
-
-
-window.addEventListener("load",()=>{
-
-const saved=localStorage.getItem(STORAGE_KEY);
-
-if(saved){
-
-try{
-
-account=JSON.parse(saved);
-
-if(!account.holidays)
-account.holidays=[];
-
-if(!account.bridges)
-account.bridges=[];
-
-if(!account.absences)
-account.absences=[];
-
-if(!account.excludedWeekdays)
-account.excludedWeekdays=[0,6];
-
-if(account.excludeAbsences===undefined)
-account.excludeAbsences=true;
-
-showApp();
-
-}catch(e){
-
-localStorage.removeItem(STORAGE_KEY);
-
-}
-
-}
-
-const now=new Date();
-
-document.getElementById("regStart").value=
-toISO(now);
-
-document.getElementById("regEnd").value=
-toISO(
-new Date(
-now.getFullYear(),
-now.getMonth(),
-now.getDate()+365
-)
-);
+  });
 
 });
+</script>
 
-
-function save(){
-
-localStorage.setItem(
-STORAGE_KEY,
-JSON.stringify(account)
-);
-
-}
-
-
-function showLogin(){
-
-document.getElementById("registerBox")
-.classList.add("hidden");
-
-document.getElementById("loginBox")
-.classList.remove("hidden");
-
-}
+</body>
+</html>
+```
